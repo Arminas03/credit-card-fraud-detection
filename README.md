@@ -1,6 +1,6 @@
-## credit-card-fraud-detection
+# credit-card-fraud-detection
 
-# Models:
+## Models:
 SVM
 k-NN
 Naive Bayes
