@@ -4,6 +4,7 @@ import numpy as np
 import pandas as pd
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import f1_score, confusion_matrix
+from optuna.study.study import Trial
 
 data = pd.read_csv("creditcard.csv")
 
@@ -12,9 +13,9 @@ y = data['Class']
 
 x_train, x_test, y_train, y_test = train_test_split(x, y, train_size=0.8, random_state=2)
 
-def objective(trial):
+def objective(trial: Trial):
     n_estimators = trial.suggest_int('n_estimators', 100, 500)
-    learning_rate = trial.suggest_loguniform('learning_rate', 0.01, 0.3)
+    learning_rate = trial.suggest_float('learning_rate', 0.01, 0.3)
     max_depth = trial.suggest_int('max_depth', 3, 10)
     min_child_weight = trial.suggest_int('min_child_weight', 1, 10)
     subsample = trial.suggest_float('subsample', 0.6, 1.0)
@@ -40,7 +41,7 @@ def objective(trial):
 study = optuna.create_study(direction='maximize')  # Maximize the f1 score
 study.optimize(objective, n_trials=100)
 
-print("Best parameters: ", study.best_params)
+print(f"Best value: {study.best_value} (params: {study.best_params})")
 
 best_xgb_model = XGBClassifier(**study.best_params)
 
