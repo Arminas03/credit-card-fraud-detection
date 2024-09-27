@@ -1,4 +1,4 @@
 # credit-card-fraud-detection
 
 ## Models:
-k-NN, Naive Bayes, Isolation forest
+XGBoost, Naive Bayes, Isolation forest
