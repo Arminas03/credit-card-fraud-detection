@@ -38,7 +38,7 @@ def objective(trial: Trial):
     y_pred = xgb_model.predict(x_test)
     return f1_score(y_test, y_pred)
 
-study = optuna.create_study(direction='maximize')  # Maximize the f1 score
+study = optuna.create_study(direction='maximize')
 study.optimize(objective, n_trials=100)
 
 print(f"Best value: {study.best_value} (params: {study.best_params})")
