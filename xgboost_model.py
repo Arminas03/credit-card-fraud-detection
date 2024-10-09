@@ -35,8 +35,6 @@ def objective(trial: Trial, x_train, y_train):
         random_state=0
     )
 
-    xgb_model.fit(x_train, y_train)
-
     scores = cross_val_score(xgb_model, x_train, y_train, cv=5, scoring='f1')
     return scores.mean()
 
