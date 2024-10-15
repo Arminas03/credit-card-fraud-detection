@@ -20,8 +20,8 @@ def objective(trial: Trial, x_train, y_train):
     learning_rate = trial.suggest_float('learning_rate', 0.01, 0.3)
     max_depth = trial.suggest_int('max_depth', 3, 10)
     min_child_weight = trial.suggest_int('min_child_weight', 1, 10)
-    subsample = trial.suggest_float('subsample', 0.6, 1.0)
-    colsample_bytree = trial.suggest_float('colsample_bytree', 0.6, 1.0)
+    subsample = trial.suggest_float('subsample', 0.6, 1)
+    colsample_bytree = trial.suggest_float('colsample_bytree', 0.6, 1)
     gamma = trial.suggest_float('gamma', 0, 5)
 
     xgb_model = XGBClassifier(
