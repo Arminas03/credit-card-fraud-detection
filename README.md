@@ -1,4 +1,5 @@
-# credit-card-fraud-detection
+# Collaborators
+- [@torzsokb](https://github.com/torzsokb)
 
-## Models:
+### Models:
 Autoencoders, XGBoost, Isolation forest
